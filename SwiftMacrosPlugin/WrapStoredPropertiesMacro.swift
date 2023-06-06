@@ -76,9 +76,6 @@ extension VariableDeclSyntax {
 
     case .getter:
       return false
-
-    @unknown default:
-      return false
     }
   }
 }

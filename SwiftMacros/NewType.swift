@@ -5,7 +5,7 @@
   named(rawValue),
   arbitrary // should be named(init(_:)) but that doesn't compile as of swift-DEVELOPMENT-SNAPSHOT-2023-02-02-a
 )
-public macro NewType<T>(_: T.Type) = #externalMacro(module: "MacroExamplesPlugin", type: "NewTypeMacro")
+public macro NewType<T>(_: T.Type) = #externalMacro(module: "SwiftMacrosPlugin", type: "NewTypeMacro")
 
 public protocol NewTypeProtocol: RawRepresentable {
   init(_ rawValue: RawValue)

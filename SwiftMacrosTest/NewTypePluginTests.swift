@@ -1,7 +1,7 @@
 import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
-import MacroExamplesPlugin
+import SwiftMacrosPlugin
 import XCTest
 
 final class NewTypePluginTests: XCTestCase {

@@ -27,7 +27,7 @@ public struct AddCompletionHandlerMacro: PeerMacro {
       }
 
       let newSignature = funcDecl.signature.with(\.effectSpecifiers, newEffects)
-      let messageID = MessageID(domain: "MacroExamples", id: "MissingAsync")
+      let messageID = MessageID(domain: "SwiftMacros", id: "MissingAsync")
 
       let diag = Diagnostic(
         // Where the error should go (on the "+").

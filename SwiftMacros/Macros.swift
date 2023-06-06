@@ -2,15 +2,15 @@ import Foundation
 
 /// "Stringify" the provided value and produce a tuple that includes both the
 /// original value as well as the source code that generated it.
-@freestanding(expression) public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "MacroExamplesPlugin", type: "StringifyMacro")
+@freestanding(expression) public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "SwiftMacrosPlugin", type: "StringifyMacro")
 
 /// Macro that produces a warning on "+" operators within the expression, and
 /// suggests changing them to "-".
-@freestanding(expression) public macro addBlocker<T>(_ value: T) -> T = #externalMacro(module: "MacroExamplesPlugin", type: "AddBlocker")
+@freestanding(expression) public macro addBlocker<T>(_ value: T) -> T = #externalMacro(module: "SwiftMacrosPlugin", type: "AddBlocker")
 
 /// Macro that produces a warning, as a replacement for the built-in
 /// #warning("...").
-@freestanding(expression) public macro myWarning(_ message: String) = #externalMacro(module: "MacroExamplesPlugin", type: "WarningMacro")
+@freestanding(expression) public macro myWarning(_ message: String) = #externalMacro(module: "SwiftMacrosPlugin", type: "WarningMacro")
 
 public enum FontWeight {
   case thin
@@ -25,19 +25,19 @@ public protocol ExpressibleByFontLiteral {
 }
 
 /// Font literal similar to, e.g., #colorLiteral.
-@freestanding(expression) public macro fontLiteral<T>(name: String, size: Int, weight: FontWeight) -> T = #externalMacro(module: "MacroExamplesPlugin", type: "FontLiteralMacro")
+@freestanding(expression) public macro fontLiteral<T>(name: String, size: Int, weight: FontWeight) -> T = #externalMacro(module: "SwiftMacrosPlugin", type: "FontLiteralMacro")
   where T: ExpressibleByFontLiteral
 
 /// Check if provided string literal is a valid URL and produce a non-optional
 /// URL value. Emit error otherwise.
-@freestanding(expression) public macro URL(_ stringLiteral: String) -> URL = #externalMacro(module: "MacroExamplesPlugin", type: "URLMacro")
+@freestanding(expression) public macro URL(_ stringLiteral: String) -> URL = #externalMacro(module: "SwiftMacrosPlugin", type: "URLMacro")
 
 
 /// Apply the specified attribute to each of the stored properties within the
 /// type or member to which the macro is attached. The string can be
 /// any attribute (without the `@`).
 @attached(memberAttribute)
-public macro wrapStoredProperties(_ attributeName: String) = #externalMacro(module: "MacroExamplesPlugin", type: "WrapStoredPropertiesMacro")
+public macro wrapStoredProperties(_ attributeName: String) = #externalMacro(module: "SwiftMacrosPlugin", type: "WrapStoredPropertiesMacro")
 
 /// Wrap up the stored properties of the given type in a dictionary,
 /// turning them into computed properties.
@@ -52,7 +52,7 @@ public macro wrapStoredProperties(_ attributeName: String) = #externalMacro(modu
 @attached(accessor)
 @attached(member, names: named(_storage))
 @attached(memberAttribute)
-public macro DictionaryStorage() = #externalMacro(module: "MacroExamplesPlugin", type: "DictionaryStorageMacro")
+public macro DictionaryStorage() = #externalMacro(module: "SwiftMacrosPlugin", type: "DictionaryStorageMacro")
 
 public protocol Observable {}
 
@@ -91,34 +91,34 @@ public struct ObservationRegistrar<Subject: Observable> {
 @attached(member, names: named(Storage), named(_storage), named(_registrar), named(addObserver), named(removeObserver), named(withTransaction))
 @attached(memberAttribute)
 @attached(conformance)
-public macro Observable() = #externalMacro(module: "MacroExamplesPlugin", type: "ObservableMacro")
+public macro Observable() = #externalMacro(module: "SwiftMacrosPlugin", type: "ObservableMacro")
 
 @attached(accessor)
-public macro ObservableProperty() = #externalMacro(module: "MacroExamplesPlugin", type: "ObservablePropertyMacro")
+public macro ObservableProperty() = #externalMacro(module: "SwiftMacrosPlugin", type: "ObservablePropertyMacro")
 
 /// Adds a "completionHandler" variant of an async function, which creates a new
 /// task , calls thh original async function, and delivers its result to the completion
 /// handler.
 @attached(peer, names: overloaded)
 public macro AddCompletionHandler() =
-    #externalMacro(module: "MacroExamplesPlugin", type: "AddCompletionHandlerMacro")
+    #externalMacro(module: "SwiftMacrosPlugin", type: "AddCompletionHandlerMacro")
 
 @attached(peer, names: overloaded)
 public macro AddAsync() =
-    #externalMacro(module: "MacroExamplesPlugin", type: "AddAsyncMacro")
+    #externalMacro(module: "SwiftMacrosPlugin", type: "AddAsyncMacro")
 
 /// Add computed properties named `is<Case>` for each case element in the enum.
 @attached(member, names: arbitrary)
-public macro CaseDetection() = #externalMacro(module: "MacroExamplesPlugin", type: "CaseDetectionMacro")
+public macro CaseDetection() = #externalMacro(module: "SwiftMacrosPlugin", type: "CaseDetectionMacro")
 
 @attached(member, names: named(Meta))
-public macro MetaEnum() = #externalMacro(module: "MacroExamplesPlugin", type: "MetaEnumMacro")
+public macro MetaEnum() = #externalMacro(module: "SwiftMacrosPlugin", type: "MetaEnumMacro")
 
 @attached(member)
-public macro CodableKey(name: String) = #externalMacro(module: "MacroExamplesPlugin", type: "CodableKey")
+public macro CodableKey(name: String) = #externalMacro(module: "SwiftMacrosPlugin", type: "CodableKey")
 
 @attached(member, names: named(CodingKeys))
-public macro CustomCodable() = #externalMacro(module: "MacroExamplesPlugin", type: "CustomCodable")
+public macro CustomCodable() = #externalMacro(module: "SwiftMacrosPlugin", type: "CustomCodable")
 
 /// Create an option set from a struct that contains a nested `Options` enum.
 ///
@@ -146,4 +146,4 @@ public macro CustomCodable() = #externalMacro(module: "MacroExamplesPlugin", typ
 ///     }
 @attached(member, names: arbitrary)
 @attached(conformance)
-public macro MyOptionSet<RawType>() = #externalMacro(module: "MacroExamplesPlugin", type: "OptionSetMacro")
+public macro MyOptionSet<RawType>() = #externalMacro(module: "SwiftMacrosPlugin", type: "OptionSetMacro")

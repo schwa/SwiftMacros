@@ -1,14 +1,14 @@
 import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
-import MacroExamplesPlugin
+import SwiftMacrosPlugin
 import XCTest
 
 var testMacros: [String: Macro.Type] = [
   "stringify" : StringifyMacro.self,
 ]
 
-final class MacroExamplesPluginTests: XCTestCase {
+final class SwiftMacrosPluginTests: XCTestCase {
   func testStringify() {
     let sf: SourceFileSyntax =
       #"""

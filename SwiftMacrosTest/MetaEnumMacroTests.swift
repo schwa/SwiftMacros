@@ -2,7 +2,7 @@ import XCTest
 import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
-import MacroExamplesPlugin
+import SwiftMacrosPlugin
 
 final class CaseMacroTests: XCTestCase {
   let testMacros: [String: Macro.Type] = [
